@@ -255,7 +255,7 @@ void VideoGameListView::updateInfoPanel()
 		mVideo->setImage(file->getThumbnailPath());
 		mMarquee.setImage(file->getMarqueePath());
 		mImage.setImage(file->getImagePath());
-
+		mFanArt.setImage(file->getFanArtPath());
 		mDescription.setText(file->metadata.get("desc"));
 		mDescContainer.reset();
 
@@ -277,6 +277,7 @@ void VideoGameListView::updateInfoPanel()
 	}
 
 	std::vector<GuiComponent*> comps = getMDValues();
+	comps.push_back(&mFanArt);
 	comps.push_back(&mMarquee);
 	comps.push_back(mVideo);
 	comps.push_back(&mDescription);

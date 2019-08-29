@@ -195,10 +195,9 @@ void DetailedGameListView::updateInfoPanel()
 	bool fadingOut;
 	if(file == NULL)
 	{
-		//mImage.setImage("");
-		//mDescription.setText("");
 		fadingOut = true;
 	}else{
+		mFanArt.setImage(file->getFanArtPath());
 		mImage.setImage(file->getImagePath());
 		mDescription.setText(file->metadata.get("desc"));
 		mDescContainer.reset();
@@ -221,6 +220,7 @@ void DetailedGameListView::updateInfoPanel()
 	}
 
 	std::vector<GuiComponent*> comps = getMDValues();
+	comps.push_back(&mFanArt);
 	comps.push_back(&mImage);
 	comps.push_back(&mDescription);
 	comps.push_back(&mName);

@@ -271,7 +271,7 @@ unsigned long SystemScreenSaver::countGameListNodes(const char *nodeName)
 
 		for(itf=allFiles.cbegin() ; itf < allFiles.cend(); itf++) {
 			if ((strcmp(nodeName, "video") == 0 && (*itf)->getVideoPath() != "") ||
-				(strcmp(nodeName, "image") == 0 && (*itf)->getImagePath() != ""))
+				(strcmp(nodeName, "fanart") == 0 && (*itf)->getFanArtPath() != ""))
 			{
 				nodeCount++;
 			}
@@ -315,7 +315,7 @@ void SystemScreenSaver::pickGameListNode(unsigned long index, const char *nodeNa
 
 		for(itf=allFiles.cbegin() ; itf < allFiles.cend(); itf++) {
 			if ((strcmp(nodeName, "video") == 0 && (*itf)->getVideoPath() != "") ||
-				(strcmp(nodeName, "image") == 0 && (*itf)->getImagePath() != ""))
+				(strcmp(nodeName, "fanart") == 0 && (*itf)->getFanArtPath() != ""))
 			{
 				if (index-- == 0)
 				{
@@ -323,8 +323,8 @@ void SystemScreenSaver::pickGameListNode(unsigned long index, const char *nodeNa
 					path = "";
 					if (strcmp(nodeName, "video") == 0)
 						path = (*itf)->getVideoPath();
-					else if (strcmp(nodeName, "image") == 0)
-						path = (*itf)->getImagePath();
+					else if (strcmp(nodeName, "fanart") == 0)
+						path = (*itf)->getFanArtPath();
 					mSystemName = (*it)->getFullName();
 					mGameName = (*itf)->getName();
 					mCurrentGame = (*itf);

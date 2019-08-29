@@ -8,7 +8,7 @@
 #include "SystemData.h"
 
 ISimpleGameListView::ISimpleGameListView(Window* window, FileData* root) : IGameListView(window, root),
-	mHeaderText(window), mHeaderImage(window), mBackground(window)
+	mHeaderText(window), mHeaderImage(window), mFanArt(window), mBackground(window)
 {
 	mHeaderText.setText("Logo Text");
 	mHeaderText.setSize(mSize.x(), 0);
@@ -21,10 +21,17 @@ ISimpleGameListView::ISimpleGameListView(Window* window, FileData* root) : IGame
 	mHeaderImage.setPosition(mSize.x() / 2, 0);
 	mHeaderImage.setDefaultZIndex(50);
 
+	// fanart
+	mFanArt.setOrigin(0, 0);
+	mFanArt.setPosition(0, 0);
+	mFanArt.setResize(mSize.x(), mSize.y());
+	mFanArt.setDefaultZIndex(10);
+
 	mBackground.setResize(mSize.x(), mSize.y());
 	mBackground.setDefaultZIndex(0);
 
 	addChild(&mHeaderText);
+	addChild(&mFanArt);
 	addChild(&mBackground);
 }
 
@@ -32,6 +39,7 @@ void ISimpleGameListView::onThemeChanged(const std::shared_ptr<ThemeData>& theme
 {
 	using namespace ThemeFlags;
 	mBackground.applyTheme(theme, getName(), "background", ALL);
+	mFanArt.applyTheme(theme, getName(), "md_fanart", ALL);
 	mHeaderImage.applyTheme(theme, getName(), "logo", ALL);
 	mHeaderText.applyTheme(theme, getName(), "logoText", ALL);
 
@@ -160,13 +168,3 @@ bool ISimpleGameListView::input(InputConfig* config, Input input)
 
 	return IGameListView::input(config, input);
 }
-
-
-
-
-
-
-
-
-
-

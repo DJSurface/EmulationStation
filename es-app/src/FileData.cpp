@@ -170,6 +170,28 @@ const std::string FileData::getImagePath() const
 	return image;
 }
 
+const std::string FileData::getFanArtPath() const
+{
+	std::string fanart = metadata.get("fanart");
+
+	// no fanart image, try to use local fanart image
+	if(fanart.empty())
+	{
+		const char* extList[2] = { ".png", ".jpg" };
+		for(int i = 0; i < 2; i++)
+		{
+			if(fanart.empty())
+			{
+				std::string path = mEnvData->mStartPath + "/images/" + getDisplayName() + "-fanart" + extList[i];
+				if(Utils::FileSystem::exists(path))
+					fanart = path;
+			}
+		}
+	}
+
+	return fanart;
+}
+
 std::vector<FileData*> FileData::getFilesRecursive(unsigned int typeMask, bool displayedOnly) const
 {
 	std::vector<FileData*> out;

@@ -35,6 +35,7 @@ protected:
 	TextComponent mHeaderText;
 	ImageComponent mHeaderImage;
 	ImageComponent mBackground;
+	ImageComponent mFanArt;
 
 	std::vector<GuiComponent*> mThemeExtras;
 
