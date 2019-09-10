@@ -293,7 +293,7 @@ void SystemScreenSaver::countImages()
 {
 	if (!mImagesCounted)
 	{
-		mImageCount = countGameListNodes("image");
+		mImageCount = countGameListNodes("fanart");
 		mImagesCounted = true;
 	}
 }
@@ -360,7 +360,7 @@ void SystemScreenSaver::pickRandomGameListImage(std::string& path)
 	{
 		int image = (int)(((float)rand() / float(RAND_MAX)) * (float)mImageCount);
 
-		pickGameListNode(image, "image", path);
+		pickGameListNode(image, "fanart", path);
 	}
 }
 
